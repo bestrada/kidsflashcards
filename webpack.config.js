@@ -13,18 +13,19 @@ module.exports = (env) => {
       },
       
       entry: {
-        source: "./src/index.tsx",
-        vendor: [
-          "easy-peasy",
-          "preact",
-          "jquery",
-          "underscore"
-        ]
+        app: path.resolve(__dirname, "./src/index.tsx"),
+        board: path.resolve(__dirname, "./src/board.tsx")
       },
     
       output: {
-        filename: "[name].bundle.js",
+        filename: "[name].js",
         path: path.join(__dirname, `dist/js`),
+      },
+
+      optimization: {
+        splitChunks: {
+          chunks: 'all'
+        }
       },
     
       module: {
